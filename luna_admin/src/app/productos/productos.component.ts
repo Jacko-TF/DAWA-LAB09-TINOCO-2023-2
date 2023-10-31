@@ -59,12 +59,16 @@ export class ProductosComponent implements OnInit {
   };
   
   onSubmit() {
-    this.añadir(
-      {
-        codigo:this.productsForm.controls['codigo'].value ,
-        descripcion:this.productsForm.controls['descripcion'].value, 
-        precio:this.productsForm.controls['precio'].value
-      });
+    if (this.productsForm.valid) {
+      this.añadir(
+        {
+          codigo:this.productsForm.controls['codigo'].value ,
+          descripcion:this.productsForm.controls['descripcion'].value, 
+          precio:this.productsForm.controls['precio'].value
+        });
+      }else{
+        alert("No se pudo agregar el producto, complete todos los campos");
+      }
   };
 
   onSubmitEdit() {
